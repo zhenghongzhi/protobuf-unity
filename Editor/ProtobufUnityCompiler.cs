@@ -107,14 +107,14 @@ namespace E7.Protobuf
             {
                 string outputPath = Path.GetDirectoryName(protoFileSystemPath);
 
-                string options = " --csharp_out \"{0}\" ";
+                string options = " --csharp_out=\"{0}\" ";
                 foreach (string s in includePaths)
                 {
-                    options += string.Format(" --proto_path \"{0}\" ", s);
+                    options += string.Format(" --proto_path=\"{0}\" ", s);
                 }
 
                 // Checking if the user has set valid path (there is probably a better way)
-                if (ProtoPrefs.grpcPath != "ProtobufUnity_GrpcPath" || ProtoPrefs.grpcPath != string.Empty)
+                if (ProtoPrefs.grpcPath != "ProtobufUnity_GrpcPath" && ProtoPrefs.grpcPath != string.Empty)
                     options += $" --grpc_out={outputPath} --plugin=protoc-gen-grpc={ProtoPrefs.grpcPath}";
                 //string combinedPath = string.Join(" ", optionFiles.Concat(new string[] { protoFileSystemPath }));
 
